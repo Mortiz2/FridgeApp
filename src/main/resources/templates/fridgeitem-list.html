@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Fridge Items</title>
+  <link rel="stylesheet" th:href="@{/css/fridgeItemListStyle.css}">
+</head>
+<body>
+<h2>Fridge Items</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Expiration Date</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="item : ${fridgeitems}">
+    <td th:text="${item.product.name}"></td>
+    <td th:text="${item.quantity}"></td>
+    <td th:text="${item.expiryDate}"></td>
+    <td>
+      <a th:href="@{'/view/fridgeitem/edit/' + ${item.id}}">Edit</a>
+      <a th:href="@{'/view/fridgeitem/delete/' + ${item.id}}">Delete</a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<a th:href="@{/view/fridgeitem/add}">Add New Item</a>
+</body>
+</html>
